@@ -6,7 +6,7 @@ use Dba\ControlTime\Models\Time;
 use Dba\ControlTime\Models\WorkCondition;
 use Illuminate\Database\Eloquent\Builder;
 
-/**
+/**c
  * Class Proxy
  * @package Dba\ControlTime\Support
  */
