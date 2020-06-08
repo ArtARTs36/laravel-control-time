@@ -1,0 +1,27 @@
+{
+    "name": "dba/controltime",
+    "description": "Control Time Laravel Package",
+    "type": "library",
+    "license": "Enterprise",
+    "authors": [
+        {
+            "name": "ArtARTs36",
+            "email": "temicska99@mail.ru"
+        }
+    ],
+    "require": {
+        "php": "^7.2",
+        "ext-json": "*",
+        "laravel/framework": "^6.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Dba\\ControlTime\\Tests\\": "tests/",
+            "Dba\\ControlTime\\": "src/"
+        },
+        "classmap": [
+            "database/factories",
+            "database/seeds"
+        ]
+    }
+}
