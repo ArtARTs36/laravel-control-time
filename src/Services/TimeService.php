@@ -2,7 +2,7 @@
 
 namespace Dba\ControlTime\Services;
 
-use Dba\ControlTime\Contracts\EmployeeContract;
+use ArtARTs36\EmployeeInterfaces\Employee\EmployeeInterface;
 use Dba\ControlTime\Models\Time;
 use Dba\ControlTime\Support\Proxy;
 use Illuminate\Support\Carbon;
@@ -17,12 +17,12 @@ class TimeService
     /**
      * Get Employee times by period
      *
-     * @param EmployeeContract $employee
+     * @param EmployeeInterface $employee
      * @param \DateTime $start
      * @param \DateTime $end
      * @return \Illuminate\Database\Eloquent\Collection|Time[]
      */
-    public static function getByPeriod(EmployeeContract $employee, \DateTime $start, \DateTime $end)
+    public static function getByPeriod(EmployeeInterface $employee, \DateTime $start, \DateTime $end)
     {
         return Time::query()->where(Time::FIELD_EMPLOYEE_ID, $employee->getId())
             ->where(Time::FIELD_DATE, '>=', $start->format(Proxy::getTimeFormat()))

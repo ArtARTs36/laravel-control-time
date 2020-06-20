@@ -2,6 +2,9 @@
 
 namespace Dba\ControlTime\Models;
 
+use ArtARTs36\EmployeeInterfaces\Employee\EmployeeInterface;
+use ArtARTs36\EmployeeInterfaces\WorkCondition\WorkConditionInterface;
+use ArtARTs36\EmployeeInterfaces\WorkCondition\WorkConditionSettersAndGetters;
 use Dba\ControlTime\Support\Proxy;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -14,11 +17,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property int $employee_id
  * @property int $amount_hour
  * @property int $amount_month
+ * @property EmployeeInterface $employee
  *
  * @package Dba\ControlTime\Models
  */
-class WorkCondition extends Model
+class WorkCondition extends Model implements WorkConditionInterface
 {
+    use WorkConditionSettersAndGetters;
+
     const FIELD_POSITION = 'position';
     const FIELD_RATE = 'rate';
     const FIELD_EMPLOYEE_ID = 'employee_id';

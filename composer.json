@@ -9,10 +9,17 @@
             "email": "temicska99@mail.ru"
         }
     ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/ArtARTs36/employee-interfaces"
+        }
+    ],
     "require": {
         "php": "^7.2",
         "ext-json": "*",
-        "laravel/framework": "^6.2"
+        "laravel/framework": "^6.2",
+        "artarts36/employee-interfaces": "dev-master"
     },
     "autoload": {
         "psr-4": {
