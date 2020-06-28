@@ -2,15 +2,10 @@
 
 namespace Dba\ControlTime\Tests;
 
-use App\Models\Employee\Employee;
-use Carbon\Carbon;
 use Dba\ControlTime\Models\Time;
-use Dba\ControlTime\Models\WorkCondition;
 use Dba\ControlTime\Support\Proxy;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Support\Facades\Schema;
 use Tests\TestCase;
 
 class TimeTest extends TestCase
