@@ -21,7 +21,7 @@ class TimeController extends BaseController
     {
         return $this->indexShow(Proxy::getTimeBuilder(), Proxy::getTimeClass())
             ->latest('id')
-            ->paginate(Proxy::getTimeIndexShowingCount(), ['*'], "TimeIndex", $page);
+            ->paginate(Proxy::getTimeIndexShowingCount(), ['*'], 'TimeIndex', $page);
     }
 
     /**

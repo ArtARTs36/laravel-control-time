@@ -97,6 +97,7 @@ class TimeTest extends TestCase
         $response->assertOk();
         static::assertArrayHasKey('success', $decode);
         static::assertTrue($decode['success']);
+        static::assertNull(Proxy::getTimeBuilder()->find($time->id));
     }
 
     /**
