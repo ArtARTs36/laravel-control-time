@@ -57,13 +57,19 @@ class TimeController extends BaseController
         return new DestroyResponse($this->service->delete($this->repository->find($time)));
     }
 
-    public function updateQuantity(TimeUpdateQuantityRequest $request, Time $time): JsonResource
+    public function updateQuantity(TimeUpdateQuantityRequest $request, int $timeId): JsonResource
     {
-        return new JsonResource($this->service->updateQuantity($time, $request->get(Time::FIELD_QUANTITY)));
+        return new JsonResource($this->service->updateQuantity(
+            $this->repository->find($timeId),
+            $request->get(Time::FIELD_QUANTITY)
+        ));
     }
 
-    public function updateComment(TimeUpdateCommentRequest $request, Time $time): JsonResource
+    public function updateComment(TimeUpdateCommentRequest $request, int $timeId): JsonResource
     {
-        return new JsonResource($this->service->updateComment($time, $request->get(Time::FIELD_COMMENT)));
+        return new JsonResource($this->service->updateComment(
+            $this->repository->find($timeId),
+            $request->get(Time::FIELD_COMMENT)
+        ));
     }
 }
