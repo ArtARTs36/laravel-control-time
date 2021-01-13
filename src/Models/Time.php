@@ -35,7 +35,7 @@ class Time extends Model
         self::FIELD_COMMENT,
     ];
 
-    protected $table = 'times';
+    protected $table = 'controltime_times';
 
     protected static function boot(): void
     {
