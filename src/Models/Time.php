@@ -1,8 +1,8 @@
 <?php
 
-namespace Dba\ControlTime\Models;
+namespace ArtARTs36\ControlTime\Models;
 
-use Dba\ControlTime\Support\Proxy;
+use ArtARTs36\ControlTime\Support\Proxy;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property int $employee_id
  * @property string $comment
  *
- * @package Dba\ControlTime\Models
+ * @package ArtARTs36\ControlTime\Models
  */
 class Time extends Model
 {

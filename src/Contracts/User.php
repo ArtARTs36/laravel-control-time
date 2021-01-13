@@ -1,6 +1,6 @@
 <?php
 
-namespace Dba\ControlTime\Contracts;
+namespace ArtARTs36\ControlTime\Contracts;
 
 interface User
 {

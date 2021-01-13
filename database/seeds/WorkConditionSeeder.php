@@ -1,7 +1,7 @@
 <?php
 
-use Dba\ControlTime\Models\WorkCondition;
-use Dba\ControlTime\Support\Proxy;
+use ArtARTs36\ControlTime\Models\WorkCondition;
+use ArtARTs36\ControlTime\Support\Proxy;
 use Illuminate\Database\Seeder;
 
 class WorkConditionSeeder extends Seeder

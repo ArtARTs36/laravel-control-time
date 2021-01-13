@@ -1,6 +1,6 @@
 <?php
 
-namespace Dba\ControlTime\Repositories;
+namespace ArtARTs36\ControlTime\Repositories;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;

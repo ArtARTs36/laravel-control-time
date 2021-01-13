@@ -1,12 +1,12 @@
 <?php
 
-namespace Dba\ControlTime\Http\Requests;
+namespace ArtARTs36\ControlTime\Http\Requests;
 
-use Dba\ControlTime\Models\Time;
+use ArtARTs36\ControlTime\Models\Time;
 
 /**
  * Class TimeStoreRequest
- * @package Dba\ControlTime\Http\Requests
+ * @package ArtARTs36\ControlTime\Http\Requests
  */
 class TimeStoreRequest extends AuthorizedRequest
 {

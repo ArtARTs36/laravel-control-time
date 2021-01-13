@@ -1,13 +1,13 @@
 <?php
 
-namespace Dba\ControlTime\Providers;
+namespace ArtARTs36\ControlTime\Providers;
 
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Route;
 
 class RouteProvider extends RouteServiceProvider
 {
-    protected $namespace = 'Dba\ControlTime\Http\Controllers';
+    protected $namespace = 'ArtARTs36\ControlTime\Http\Controllers';
 
     public function map(): void
     {

@@ -1,12 +1,12 @@
 <?php
 
-namespace Dba\ControlTime\Support;
+namespace ArtARTs36\ControlTime\Support;
 
 use Illuminate\Database\Eloquent\Builder;
 
 /**
  * Class Proxy
- * @package Dba\ControlTime\Support
+ * @package ArtARTs36\ControlTime\Support
  */
 class Proxy
 {

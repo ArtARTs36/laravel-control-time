@@ -1,9 +1,9 @@
 <?php
 
-namespace Dba\ControlTime\Traits;
+namespace ArtARTs36\ControlTime\Traits;
 
 use ArtARTs36\EmployeeInterfaces\WorkCondition\WorkConditionInterface;
-use Dba\ControlTime\Models\WorkCondition;
+use ArtARTs36\ControlTime\Models\WorkCondition;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 

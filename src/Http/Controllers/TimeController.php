@@ -1,16 +1,16 @@
 <?php
 
-namespace Dba\ControlTime\Http\Controllers;
+namespace ArtARTs36\ControlTime\Http\Controllers;
 
-use Dba\ControlTime\Http\DataTransferObjects\CreatingTime;
-use Dba\ControlTime\Http\Requests\TimeStoreRequest;
-use Dba\ControlTime\Http\Requests\TimeUpdateCommentRequest;
-use Dba\ControlTime\Http\Requests\TimeUpdateQuantityRequest;
-use Dba\ControlTime\Http\Responses\DestroyResponse;
-use Dba\ControlTime\Models\Time;
-use Dba\ControlTime\Repositories\TimeRepository;
-use Dba\ControlTime\Services\TimeCreator;
-use Dba\ControlTime\Services\TimeService;
+use ArtARTs36\ControlTime\Http\DataTransferObjects\CreatingTime;
+use ArtARTs36\ControlTime\Http\Requests\TimeStoreRequest;
+use ArtARTs36\ControlTime\Http\Requests\TimeUpdateCommentRequest;
+use ArtARTs36\ControlTime\Http\Requests\TimeUpdateQuantityRequest;
+use ArtARTs36\ControlTime\Http\Responses\DestroyResponse;
+use ArtARTs36\ControlTime\Models\Time;
+use ArtARTs36\ControlTime\Repositories\TimeRepository;
+use ArtARTs36\ControlTime\Services\TimeCreator;
+use ArtARTs36\ControlTime\Services\TimeService;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Http\Resources\Json\JsonResource;
 

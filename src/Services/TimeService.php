@@ -1,9 +1,9 @@
 <?php
 
-namespace Dba\ControlTime\Services;
+namespace ArtARTs36\ControlTime\Services;
 
 use ArtARTs36\EmployeeInterfaces\Employee\EmployeeInterface;
-use Dba\ControlTime\Models\Time;
+use ArtARTs36\ControlTime\Models\Time;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 

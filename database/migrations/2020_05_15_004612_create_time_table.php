@@ -17,14 +17,14 @@ class CreateTimeTable extends Migration
             $table->bigIncrements('id');
             $table->timestamps();
 
-            $table->string(\Dba\ControlTime\Models\Time::FIELD_COMMENT, 250)->nullable();
-            $table->date(\Dba\ControlTime\Models\Time::FIELD_DATE);
-            $table->integer(\Dba\ControlTime\Models\Time::FIELD_QUANTITY);
-            $table->unsignedInteger(\Dba\ControlTime\Models\Time::FIELD_EMPLOYEE_ID);
+            $table->string(\ArtARTs36\ControlTime\Models\Time::FIELD_COMMENT, 250)->nullable();
+            $table->date(\ArtARTs36\ControlTime\Models\Time::FIELD_DATE);
+            $table->integer(\ArtARTs36\ControlTime\Models\Time::FIELD_QUANTITY);
+            $table->unsignedInteger(\ArtARTs36\ControlTime\Models\Time::FIELD_EMPLOYEE_ID);
 
-            $table->foreign(\Dba\ControlTime\Models\Time::FIELD_EMPLOYEE_ID)
+            $table->foreign(\ArtARTs36\ControlTime\Models\Time::FIELD_EMPLOYEE_ID)
                 ->references('id')
-                ->on(\Dba\ControlTime\Support\Proxy::getEmployeeTable());
+                ->on(\ArtARTs36\ControlTime\Support\Proxy::getEmployeeTable());
         });
     }
 

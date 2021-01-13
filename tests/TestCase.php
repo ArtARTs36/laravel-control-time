@@ -1,10 +1,9 @@
 <?php
 
-namespace Dba\ControlTime\Tests;
+namespace ArtARTs36\ControlTime\Tests;
 
-use ArtARTs36\EmployeeInterfaces\Employee\EmployeeInterface;
-use Dba\ControlTime\Providers\ControlTimeProvider;
-use Dba\ControlTime\Tests\Prototypes\User;
+use ArtARTs36\ControlTime\Providers\ControlTimeProvider;
+use ArtARTs36\ControlTime\Tests\Prototypes\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Str;
 

@@ -1,11 +1,11 @@
 <?php
 
-namespace Dba\ControlTime\Models;
+namespace ArtARTs36\ControlTime\Models;
 
 use ArtARTs36\EmployeeInterfaces\Employee\EmployeeInterface;
 use ArtARTs36\EmployeeInterfaces\WorkCondition\WorkConditionInterface;
 use ArtARTs36\EmployeeInterfaces\WorkCondition\WorkConditionSettersAndGetters;
-use Dba\ControlTime\Support\Proxy;
+use ArtARTs36\ControlTime\Support\Proxy;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -19,7 +19,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property int $amount_month
  * @property EmployeeInterface $employee
  *
- * @package Dba\ControlTime\Models
+ * @package ArtARTs36\ControlTime\Models
  */
 class WorkCondition extends Model implements WorkConditionInterface
 {

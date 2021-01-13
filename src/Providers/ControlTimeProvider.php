@@ -1,6 +1,6 @@
 <?php
 
-namespace Dba\ControlTime\Providers;
+namespace ArtARTs36\ControlTime\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory as EloquentFactory;

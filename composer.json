@@ -26,8 +26,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Dba\\ControlTime\\Tests\\": "tests/",
-            "Dba\\ControlTime\\": "src/"
+            "ArtARTs36\\ControlTime\\Tests\\": "tests/",
+            "ArtARTs36\\ControlTime\\": "src/"
         },
         "classmap": [
             "database/factories",

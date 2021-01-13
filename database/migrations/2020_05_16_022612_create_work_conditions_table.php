@@ -1,6 +1,6 @@
 <?php
 
-use Dba\ControlTime\Models\WorkCondition;
+use ArtARTs36\ControlTime\Models\WorkCondition;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -26,7 +26,7 @@ class CreateWorkConditionsTable extends Migration
 
             $table->foreign(WorkCondition::FIELD_EMPLOYEE_ID)
                 ->references('id')
-                ->on(\Dba\ControlTime\Support\Proxy::getEmployeeTable());
+                ->on(\ArtARTs36\ControlTime\Support\Proxy::getEmployeeTable());
         });
     }
 

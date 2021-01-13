@@ -1,9 +1,9 @@
 <?php
 
-namespace Dba\ControlTime\Tests\Feature;
+namespace ArtARTs36\ControlTime\Tests\Feature;
 
-use Dba\ControlTime\Models\Time;
-use Dba\ControlTime\Tests\TestCase;
+use ArtARTs36\ControlTime\Models\Time;
+use ArtARTs36\ControlTime\Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 
 class TimeTest extends TestCase
@@ -21,7 +21,7 @@ class TimeTest extends TestCase
 
     /**
      * Get all Times
-     * @covers \Dba\ControlTime\Http\Controllers\TimeController::index
+     * @covers \ArtARTs36\ControlTime\Http\Controllers\TimeController::index
      */
     public function testIndex(): void
     {
@@ -43,7 +43,7 @@ class TimeTest extends TestCase
 
     /**
      * Test create Time
-     * @covers \Dba\ControlTime\Http\Controllers\TimeController::store
+     * @covers \ArtARTs36\ControlTime\Http\Controllers\TimeController::store
      */
     public function testStore(): void
     {
@@ -65,7 +65,7 @@ class TimeTest extends TestCase
 
     /**
      * TEST update Time
-     * @covers \Dba\ControlTime\Http\Controllers\TimeController::update
+     * @covers \ArtARTs36\ControlTime\Http\Controllers\TimeController::update
      */
     public function testUpdate(): void
     {
@@ -80,7 +80,7 @@ class TimeTest extends TestCase
 
     /**
      * TEST delete Time
-     * @covers \Dba\ControlTime\Http\Controllers\TimeController::destroy
+     * @covers \ArtARTs36\ControlTime\Http\Controllers\TimeController::destroy
      */
     public function testDestroy(): void
     {

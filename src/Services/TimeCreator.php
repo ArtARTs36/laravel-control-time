@@ -1,11 +1,11 @@
 <?php
 
-namespace Dba\ControlTime\Services;
+namespace ArtARTs36\ControlTime\Services;
 
-use Dba\ControlTime\Http\DataTransferObjects\CreatingTime;
-use Dba\ControlTime\Http\Requests\TimeStoreRequest;
-use Dba\ControlTime\Models\Time;
-use Dba\ControlTime\Repositories\TimeRepository;
+use ArtARTs36\ControlTime\Http\DataTransferObjects\CreatingTime;
+use ArtARTs36\ControlTime\Http\Requests\TimeStoreRequest;
+use ArtARTs36\ControlTime\Models\Time;
+use ArtARTs36\ControlTime\Repositories\TimeRepository;
 
 class TimeCreator
 {

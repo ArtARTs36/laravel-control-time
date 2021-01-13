@@ -1,8 +1,8 @@
 <?php
 
-namespace Dba\ControlTime\Http\DataTransferObjects;
+namespace ArtARTs36\ControlTime\Http\DataTransferObjects;
 
-use Dba\ControlTime\Http\Support\DataTransferObject;
+use ArtARTs36\ControlTime\Http\Support\DataTransferObject;
 
 class CreatingTime extends DataTransferObject
 {
