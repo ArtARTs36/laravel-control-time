@@ -1,7 +1,7 @@
 <?php
 
-use Dba\ControlTime\Models\Time;
-use Dba\ControlTime\Support\Proxy;
+use ArtARTs36\ControlTime\Models\Time;
+use ArtARTs36\ControlTime\Support\Proxy;
 
 class TimeSeeder extends \Illuminate\Database\Seeder
 {

@@ -1,16 +1,13 @@
 <?php
 
-namespace Dba\ControlTime\Tests;
+namespace ArtARTs36\ControlTime\Tests\Feature;
 
-use Dba\ControlTime\Models\Time;
-use Dba\ControlTime\Support\Proxy;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use ArtARTs36\ControlTime\Models\Time;
+use ArtARTs36\ControlTime\Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
-use Tests\TestCase;
 
 class TimeTest extends TestCase
 {
-    use RefreshDatabase;
     use WithFaker;
 
     public const TIMES_COUNT = 10;
@@ -24,14 +21,13 @@ class TimeTest extends TestCase
 
     /**
      * Get all Times
+     * @covers \ArtARTs36\ControlTime\Http\Controllers\TimeController::index
      */
     public function testIndex(): void
     {
-        Proxy::getTimeBuilder()->truncate();
-
-        $times = factory(Proxy::getTimeClass(), static::TIMES_COUNT)->make()
+        $times = factory(Time::class, static::TIMES_COUNT)->make()
             ->each(function (Time $time) {
-                $time->employee_id = factory(Proxy::getEmployeeClass())->create()->id;
+                $time->employee_id = $this->createEmployee()->id;
                 $time->save();
             });
 
@@ -47,6 +43,7 @@ class TimeTest extends TestCase
 
     /**
      * Test create Time
+     * @covers \ArtARTs36\ControlTime\Http\Controllers\TimeController::store
      */
     public function testStore(): void
     {
@@ -58,7 +55,7 @@ class TimeTest extends TestCase
 
         $response->assertCreated();
 
-        $response = $response->decodeResponseJson();
+        $response = $response->decodeResponseJson('data');
 
         foreach ($time as $key => $value) {
             self::assertArrayHasKey($key, $response);
@@ -68,6 +65,7 @@ class TimeTest extends TestCase
 
     /**
      * TEST update Time
+     * @covers \ArtARTs36\ControlTime\Http\Controllers\TimeController::update
      */
     public function testUpdate(): void
     {
@@ -82,6 +80,7 @@ class TimeTest extends TestCase
 
     /**
      * TEST delete Time
+     * @covers \ArtARTs36\ControlTime\Http\Controllers\TimeController::destroy
      */
     public function testDestroy(): void
     {
@@ -97,7 +96,7 @@ class TimeTest extends TestCase
         $response->assertOk();
         static::assertArrayHasKey('success', $decode);
         static::assertTrue($decode['success']);
-        static::assertNull(Proxy::getTimeBuilder()->find($time->id));
+        static::assertNull(Time::query()->find($time->id));
     }
 
     /**
@@ -108,7 +107,7 @@ class TimeTest extends TestCase
     {
         $suffix = $time ? DIRECTORY_SEPARATOR . $time->id : "";
 
-        return Proxy::apiPath('times' . $suffix);
+        return 'controltime/times' . $suffix;
     }
 
     /**
@@ -124,8 +123,8 @@ class TimeTest extends TestCase
      */
     private function makeTime(): Time
     {
-        $time = factory(Proxy::getTimeClass())->make();
-        $time->{Time::FIELD_EMPLOYEE_ID} = factory(Proxy::getEmployeeClass())->create()->id;
+        $time = factory(Time::class)->make();
+        $time->{Time::FIELD_EMPLOYEE_ID} = $this->createEmployee()->id;
 
         return $time;
     }

@@ -1,14 +1,12 @@
 <?php
 
-namespace Dba\ControlTime\Support;
+namespace ArtARTs36\ControlTime\Support;
 
-use Dba\ControlTime\Models\Time;
-use Dba\ControlTime\Models\WorkCondition;
 use Illuminate\Database\Eloquent\Builder;
 
 /**
  * Class Proxy
- * @package Dba\ControlTime\Support
+ * @package ArtARTs36\ControlTime\Support
  */
 class Proxy
 {
@@ -49,59 +47,9 @@ class Proxy
     /**
      * @return string
      */
-    public static function getWorkConditionClass(): string
-    {
-        return config('controltime.work_condition.model_class', WorkCondition::class);
-    }
-
-    /**
-     * @return string
-     */
-    public static function getWorkConditionTable(): string
-    {
-        return config('controltime.work_condition.table', 'controltime_work_conditions');
-    }
-
-    /**
-     * @return string
-     */
-    public static function getTimeFormat(): string
-    {
-        return config('controltime.time.date_format', 'Y-m-d');
-    }
-
-    /**
-     * @return string
-     */
-    public static function getTimeTable(): string
-    {
-        return config('controltime.time.table', 'times');
-    }
-
-    /**
-     * @return string
-     */
-    public static function getTimeClass(): string
-    {
-        return config('controltime.time.model_class', Time::class);
-    }
-
-    /**
-     * @return Builder
-     */
-    public static function getTimeBuilder()
-    {
-        $class = static::getTimeClass();
-
-        return $class::query();
-    }
-
-    /**
-     * @return string
-     */
     public static function getApiRoutePrefix(): string
     {
-        return config('controltime.api_route_prefix', 'controltime');
+        return config('controltime.routes.api.prefix', 'controltime');
     }
 
     /**
@@ -111,14 +59,5 @@ class Proxy
     public static function apiRoute(string $route): string
     {
         return static::getApiRoutePrefix()  . DIRECTORY_SEPARATOR . $route;
-    }
-
-    /**
-     * @param string $route
-     * @return string
-     */
-    public static function apiPath(string $route): string
-    {
-        return 'api/'. static::apiRoute($route);
     }
 }

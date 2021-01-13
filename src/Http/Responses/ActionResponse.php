@@ -1,6 +1,6 @@
 <?php
 
-namespace Dba\ControlTime\Http\Responses;
+namespace ArtARTs36\ControlTime\Http\Responses;
 
 use Illuminate\Http\JsonResponse;
 

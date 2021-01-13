@@ -1,13 +1,13 @@
 <?php
 
-namespace Dba\ControlTime\Providers;
+namespace ArtARTs36\ControlTime\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory as EloquentFactory;
 
 class ControlTimeProvider extends ServiceProvider
 {
-    const ROOT_PATH = __DIR__ . '/../../';
+    protected const ROOT_PATH = __DIR__ . '/../../';
 
     /**
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
@@ -22,7 +22,11 @@ class ControlTimeProvider extends ServiceProvider
             $this->loadMigrationsFrom(self::ROOT_PATH . 'database/migrations');
 
             $this->registerEloquentFactories();
+
+            $this->mergeConfigFrom(static::ROOT_PATH . 'config/controltime.php', 'controltime');
         }
+
+        $this->app->register(RouteProvider::class);
     }
 
     /**

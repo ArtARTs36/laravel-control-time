@@ -1,9 +1,9 @@
 <?php
 
-namespace Dba\ControlTime\Traits;
+namespace ArtARTs36\ControlTime\Traits;
 
 use ArtARTs36\EmployeeInterfaces\WorkCondition\WorkConditionInterface;
-use Dba\ControlTime\Support\Proxy;
+use ArtARTs36\ControlTime\Models\WorkCondition;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
@@ -18,7 +18,7 @@ trait HasWorkConditions
      */
     public function workConditions(): HasMany
     {
-        return $this->hasMany(Proxy::getWorkConditionClass());
+        return $this->hasMany(WorkCondition::class);
     }
 
     /**
@@ -28,7 +28,7 @@ trait HasWorkConditions
      */
     public function workCondition(): HasOne
     {
-        return $this->hasOne(Proxy::getWorkConditionClass(), 'employee_id');
+        return $this->hasOne(WorkCondition::class, 'employee_id');
     }
 
     /**

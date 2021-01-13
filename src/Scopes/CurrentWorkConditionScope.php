@@ -1,6 +1,6 @@
 <?php
 
-namespace Dba\ControlTime\Scopes;
+namespace ArtARTs36\ControlTime\Scopes;
 
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Scope;

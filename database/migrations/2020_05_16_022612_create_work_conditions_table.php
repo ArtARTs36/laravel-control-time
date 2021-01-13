@@ -1,6 +1,6 @@
 <?php
 
-use Dba\ControlTime\Models\WorkCondition;
+use ArtARTs36\ControlTime\Models\WorkCondition;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,7 +14,7 @@ class CreateWorkConditionsTable extends Migration
      */
     public function up()
     {
-        Schema::create(\Dba\ControlTime\Support\Proxy::getWorkConditionTable(), function (Blueprint $table) {
+        Schema::create('controltime_work_conditions', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
 
@@ -26,7 +26,7 @@ class CreateWorkConditionsTable extends Migration
 
             $table->foreign(WorkCondition::FIELD_EMPLOYEE_ID)
                 ->references('id')
-                ->on(\Dba\ControlTime\Support\Proxy::getEmployeeTable());
+                ->on(\ArtARTs36\ControlTime\Support\Proxy::getEmployeeTable());
         });
     }
 
@@ -37,6 +37,6 @@ class CreateWorkConditionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists(\Dba\ControlTime\Support\Proxy::getWorkConditionTable());
+        Schema::dropIfExists('controltime_work_conditions');
     }
 }

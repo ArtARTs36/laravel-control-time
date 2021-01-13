@@ -1,8 +1,8 @@
 <?php
 
-namespace Dba\ControlTime\Http\Requests;
+namespace ArtARTs36\ControlTime\Http\Requests;
 
-use Dba\ControlTime\Models\Time;
+use ArtARTs36\ControlTime\Models\Time;
 use Illuminate\Foundation\Http\FormRequest;
 
 class TimeUpdateQuantityRequest extends FormRequest

@@ -1,12 +1,12 @@
 <?php
 
-namespace Dba\ControlTime\Http\Requests;
+namespace ArtARTs36\ControlTime\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
 /**
  * Class AuthorizedRequest
- * @package Dba\ControlTime\Http\Requests
+ * @package ArtARTs36\ControlTime\Http\Requests
  */
 abstract class AuthorizedRequest extends FormRequest
 {
