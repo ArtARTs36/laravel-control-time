@@ -18,7 +18,12 @@ class TimeRepository extends Repository
         return $this
             ->newQuery()
             ->latest('id')
-            ->paginate(Proxy::getTimeIndexShowingCount(), ['*'], 'TimeIndex', $page);
+            ->paginate(
+                config('controltime.time.index_showing.page_count', 10),
+                ['*'],
+                'TimeIndex',
+                $page
+            );
     }
 
     protected function getModelClass(): string

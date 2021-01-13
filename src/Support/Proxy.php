@@ -11,14 +11,6 @@ use Illuminate\Database\Eloquent\Builder;
 class Proxy
 {
     /**
-     * @return int
-     */
-    public static function getTimeIndexShowingCount(): int
-    {
-        return config('controltime.time.index_showing.page_count', 10);
-    }
-
-    /**
      * @return string
      */
     public static function getEmployeeClass(): string

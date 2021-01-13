@@ -5,12 +5,8 @@ return [
         'model_class' => '\ArtARTs36\ControlTime\Tests\Prototypes\User',
         'table' => 'controltime_employee',
     ],
-    'work_condition' => [
-        'model_class' => '\ArtARTs36\ControlTime\Models\WorkCondition',
-    ],
     'time' => [
         'model_class' => '\ArtARTs36\ControlTime\Models\Time',
-        'table' => 'controltime_times',
         'date_format' => 'Y-m-d',
         'index_showing' => [
             'page_count' => 10,
