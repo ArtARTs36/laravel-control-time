@@ -2,13 +2,14 @@
 
 namespace ArtARTs36\ControlTime\Http\Requests;
 
+use ArtARTs36\ControlTime\Contracts\FormRequest;
 use ArtARTs36\ControlTime\Models\Time;
 
 /**
  * Class TimeStoreRequest
  * @package ArtARTs36\ControlTime\Http\Requests
  */
-class TimeStoreRequest extends AuthorizedRequest
+class TimeStoreRequest extends FormRequest
 {
     /**
      * @return array

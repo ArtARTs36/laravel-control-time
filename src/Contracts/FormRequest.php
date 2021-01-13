@@ -1,15 +1,15 @@
 <?php
 
-namespace ArtARTs36\ControlTime\Http\Requests;
-
-use Illuminate\Foundation\Http\FormRequest;
+namespace ArtARTs36\ControlTime\Contracts;
 
 /**
  * Class AuthorizedRequest
  * @package ArtARTs36\ControlTime\Http\Requests
  */
-abstract class AuthorizedRequest extends FormRequest
+abstract class FormRequest extends \Illuminate\Foundation\Http\FormRequest
 {
+    abstract public function rules(): array;
+
     /**
      * @return bool
      */

@@ -2,8 +2,8 @@
 
 namespace ArtARTs36\ControlTime\Http\Requests;
 
+use ArtARTs36\ControlTime\Contracts\FormRequest;
 use ArtARTs36\ControlTime\Models\Time;
-use Illuminate\Foundation\Http\FormRequest;
 
 class TimeUpdateQuantityRequest extends FormRequest
 {
