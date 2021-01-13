@@ -13,16 +13,16 @@ class CreateTimeTable extends Migration
      */
     public function up()
     {
-        Schema::create('times', function (Blueprint $table) {
+        Schema::create('controltime_times', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
 
-            $table->string(\ArtARTs36\ControlTime\Models\Time::FIELD_COMMENT, 250)->nullable();
-            $table->date(\ArtARTs36\ControlTime\Models\Time::FIELD_DATE);
-            $table->integer(\ArtARTs36\ControlTime\Models\Time::FIELD_QUANTITY);
-            $table->unsignedInteger(\ArtARTs36\ControlTime\Models\Time::FIELD_EMPLOYEE_ID);
+            $table->string('comment', 250)->nullable();
+            $table->date('date');
+            $table->integer('quantity');
+            $table->unsignedInteger('employee_id');
 
-            $table->foreign(\ArtARTs36\ControlTime\Models\Time::FIELD_EMPLOYEE_ID)
+            $table->foreign('employee_id')
                 ->references('id')
                 ->on(\ArtARTs36\ControlTime\Support\Proxy::getEmployeeTable());
         });
@@ -35,6 +35,6 @@ class CreateTimeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('times');
+        Schema::dropIfExists('controltime_times');
     }
 }
