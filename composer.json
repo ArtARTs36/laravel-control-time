@@ -1,8 +1,8 @@
 {
-    "name": "dba/controltime",
+    "name": "artarts36/controltime",
     "description": "Control Time Laravel Package",
     "type": "library",
-    "license": "Enterprise",
+    "license": "MIT",
     "authors": [
         {
             "name": "ArtARTs36",
