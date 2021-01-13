@@ -13,7 +13,7 @@ class CreateTimeTable extends Migration
      */
     public function up()
     {
-        Schema::create(\Dba\ControlTime\Support\Proxy::getTimeTable(), function (Blueprint $table) {
+        Schema::create('times', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
 
@@ -35,6 +35,6 @@ class CreateTimeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists(\Dba\ControlTime\Support\Proxy::getTimeTable());
+        Schema::dropIfExists('times');
     }
 }

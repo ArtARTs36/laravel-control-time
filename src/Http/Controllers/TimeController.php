@@ -2,91 +2,68 @@
 
 namespace Dba\ControlTime\Http\Controllers;
 
+use Dba\ControlTime\Http\DataTransferObjects\CreatingTime;
 use Dba\ControlTime\Http\Requests\TimeStoreRequest;
 use Dba\ControlTime\Http\Requests\TimeUpdateCommentRequest;
 use Dba\ControlTime\Http\Requests\TimeUpdateQuantityRequest;
-use Dba\ControlTime\Http\Responses\ActionResponse;
+use Dba\ControlTime\Http\Responses\DestroyResponse;
 use Dba\ControlTime\Models\Time;
-use Dba\ControlTime\Support\Proxy;
+use Dba\ControlTime\Repositories\TimeRepository;
+use Dba\ControlTime\Services\TimeCreator;
+use Dba\ControlTime\Services\TimeService;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Resources\Json\JsonResource;
 
-/**
- * Class TimeController
- * @package Dba\ControlTime\Http\Controllers
- */
 class TimeController extends BaseController
 {
-    public function index(int $page = 1): LengthAwarePaginator
+    protected $service;
+
+    protected $repository;
+
+    public function __construct(TimeService $service, TimeRepository $repository)
     {
-        return $this->indexShow(Proxy::getTimeBuilder(), Proxy::getTimeClass())
-            ->latest('id')
-            ->paginate(Proxy::getTimeIndexShowingCount(), ['*'], 'TimeIndex', $page);
+        $this->service = $service;
+        $this->repository = $repository;
+    }
+
+    public function index(TimeRepository $repository, int $page = 1): LengthAwarePaginator
+    {
+        return $repository->paginate($page);
+    }
+
+    public function show(Time $time): JsonResource
+    {
+        return new JsonResource($time);
+    }
+
+    public function store(TimeStoreRequest $request, TimeCreator $creator): JsonResource
+    {
+        return new JsonResource($creator->create(new CreatingTime($request->toArray())));
+    }
+
+    public function update(int $timeId, TimeStoreRequest $request, TimeCreator $creator): JsonResource
+    {
+        /** @var Time $time */
+        $time = $this->repository->find($timeId);
+
+        return new JsonResource($creator->update(new CreatingTime($request->toArray()), $time));
     }
 
     /**
-     * @param int $id
-     * @return Model
-     */
-    public function show(int $id): Model
-    {
-        return Proxy::getTimeBuilder()->find($id);
-    }
-
-    /**
-     * @param TimeStoreRequest $request
-     * @return Model
-     */
-    public function store(TimeStoreRequest $request): Model
-    {
-        return $this->createModel($request, Time::class);
-    }
-
-    /**
-     * @param TimeStoreRequest $request
-     * @param int $id
-     * @return Model
-     */
-    public function update(TimeStoreRequest $request, int $id): Model
-    {
-        return $this->updateModel($request, Proxy::getTimeBuilder()->find($id));
-    }
-
-    /**
-     * @param int $id
-     * @return bool|mixed|null
      * @throws \Exception
      */
-    public function destroy(int $id)
+    public function destroy(int $time): DestroyResponse
     {
-        return $this->deleteModel($id, Proxy::getTimeBuilder());
+        return new DestroyResponse($this->service->delete($this->repository->find($time)));
     }
 
-    /**
-     * @param TimeUpdateQuantityRequest $request
-     * @param int $id
-     * @return ActionResponse
-     */
-    public function updateQuantity(TimeUpdateQuantityRequest $request, int $id): ActionResponse
+    public function updateQuantity(TimeUpdateQuantityRequest $request, Time $time): JsonResource
     {
-        /** @var Time $time */
-        $time = Proxy::getTimeBuilder()->find($id);
-        $time->quantity = $request->get(Time::FIELD_QUANTITY);
-
-        return new ActionResponse($time->save(), [Time::FIELD_QUANTITY => $time->quantity]);
+        return new JsonResource($this->service->updateQuantity($time, $request->get(Time::FIELD_QUANTITY)));
     }
 
-    /**
-     * @param TimeUpdateCommentRequest $request
-     * @param int $id
-     * @return ActionResponse
-     */
-    public function updateComment(TimeUpdateCommentRequest $request, int $id): ActionResponse
+    public function updateComment(TimeUpdateCommentRequest $request, Time $time): JsonResource
     {
-        /** @var Time $time */
-        $time = Proxy::getTimeBuilder()->find($id);
-        $time->comment = $request->get(Time::FIELD_COMMENT);
-
-        return new ActionResponse($time->save(), [Time::FIELD_COMMENT => $time->comment]);
+        return new JsonResource($this->service->updateComment($time, $request->get(Time::FIELD_COMMENT)));
     }
 }

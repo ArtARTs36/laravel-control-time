@@ -14,7 +14,7 @@ class CreateWorkConditionsTable extends Migration
      */
     public function up()
     {
-        Schema::create(\Dba\ControlTime\Support\Proxy::getWorkConditionTable(), function (Blueprint $table) {
+        Schema::create('controltime_work_conditions', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
 
@@ -37,6 +37,6 @@ class CreateWorkConditionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists(\Dba\ControlTime\Support\Proxy::getWorkConditionTable());
+        Schema::dropIfExists('controltime_work_conditions');
     }
 }

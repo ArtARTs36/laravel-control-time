@@ -39,19 +39,10 @@ class WorkCondition extends Model implements WorkConditionInterface
         self::FIELD_AMOUNT_MONTH,
     ];
 
-    /**
-     * WorkCondition constructor.
-     * @param array $attributes
-     */
-    public function __construct(array $attributes = [])
-    {
-        parent::__construct($attributes);
-
-        $this->table = Proxy::getWorkConditionTable();
-    }
+    protected $table = 'controltime_work_conditions';
 
     /**
-     * @return BelongsTo
+     * @codeCoverageIgnore
      */
     public function employee(): BelongsTo
     {

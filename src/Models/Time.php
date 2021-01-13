@@ -35,16 +35,7 @@ class Time extends Model
         self::FIELD_COMMENT,
     ];
 
-    /**
-     * Time constructor.
-     * @param array $attributes
-     */
-    public function __construct(array $attributes = [])
-    {
-        parent::__construct($attributes);
-
-        $this->table = Proxy::getTimeTable();
-    }
+    protected $table = 'times';
 
     protected static function boot(): void
     {

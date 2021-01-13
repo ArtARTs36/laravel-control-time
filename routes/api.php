@@ -1,3 +1,3 @@
 <?php
 
-require_once('api.time.php');
+require 'api.time.php';
