@@ -8,14 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
- * Class Time
  * @property int $id
  * @property int $date
  * @property int $quantity
  * @property int $employee_id
  * @property string $comment
- *
- * @package ArtARTs36\ControlTime\Models
+ * @property int $subject_id
+ * @property Subject $subject
  */
 class Time extends Model
 {
@@ -46,9 +45,20 @@ class Time extends Model
         });
     }
 
+    /**
+     * @codeCoverageIgnore
+     */
     public function employee(): BelongsTo
     {
         return $this->belongsTo(config('controltime.employee.model_class'));
+    }
+
+    /**
+     * @codeCoverageIgnore
+     */
+    public function subject(): BelongsTo
+    {
+        return $this->belongsTo(Subject::class);
     }
 
     public function getHours(): int
