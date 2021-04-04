@@ -13,24 +13,6 @@ class Proxy
     /**
      * @return string
      */
-    public static function getEmployeeClass(): string
-    {
-        return config('controltime.employee.model_class');
-    }
-
-    /**
-     * @return Builder
-     */
-    public static function getEmployeeBuilder(): Builder
-    {
-        $class = static::getEmployeeClass();
-
-        return $class::query();
-    }
-
-    /**
-     * @return string
-     */
     public static function getEmployeeTable(): string
     {
         return config('controltime.employee.table', 'controltime_employee');

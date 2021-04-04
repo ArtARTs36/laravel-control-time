@@ -51,7 +51,7 @@ class Time extends Model
      */
     public function employee(): BelongsTo
     {
-        return $this->belongsTo(Proxy::getEmployeeClass());
+        return $this->belongsTo(config('controltime.employee.model_class'));
     }
 
     /**
