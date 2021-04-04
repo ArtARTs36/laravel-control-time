@@ -14,7 +14,7 @@ class ControlTimeAddSubjectIdIntoTimesTable extends Migration
     public function up()
     {
         Schema::table('controltime_times', function (Blueprint $table) {
-            $table->unsignedBigInteger('subject_id')->default(1);
+            $table->unsignedBigInteger('subject_id');
             $table->foreign('subject_id')->references('id')->on('controltime_subjects');
         });
     }
