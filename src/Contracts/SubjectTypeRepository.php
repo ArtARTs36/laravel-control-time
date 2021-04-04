@@ -11,4 +11,6 @@ interface SubjectTypeRepository
      * @return Collection|iterable<SubjectType>
      */
     public function all(): Collection;
+
+    public function create(string $slug, string $title): SubjectType;
 }
