@@ -8,14 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
- * Class Time
  * @property int $id
  * @property int $date
  * @property int $quantity
  * @property int $employee_id
  * @property string $comment
- *
- * @package ArtARTs36\ControlTime\Models
+ * @property int $subject_id
+ * @property Subject $subject
  */
 class Time extends Model
 {
@@ -27,12 +26,14 @@ class Time extends Model
     public const FULL_TIME = 8 * 60;
 
     public const RELATION_EMPLOYEE = 'employee';
+    public const FIELD_SUBJECT_ID = 'subject_id';
 
     protected $fillable = [
         self::FIELD_DATE,
         self::FIELD_EMPLOYEE_ID,
         self::FIELD_QUANTITY,
         self::FIELD_COMMENT,
+        self::FIELD_SUBJECT_ID,
     ];
 
     protected $table = 'controltime_times';
@@ -47,7 +48,7 @@ class Time extends Model
     }
 
     /**
-     * @return BelongsTo
+     * @codeCoverageIgnore
      */
     public function employee(): BelongsTo
     {
@@ -55,8 +56,13 @@ class Time extends Model
     }
 
     /**
-     * @return int
+     * @codeCoverageIgnore
      */
+    public function subject(): BelongsTo
+    {
+        return $this->belongsTo(Subject::class);
+    }
+
     public function getHours(): int
     {
         return (int) ($this->quantity / 60);

@@ -14,6 +14,7 @@ abstract class TestCase extends \Orchestra\Testbench\TestCase
     public function setup() : void
     {
         parent::setUp();
+
         $this->artisan('migrate', ['--database' => 'testing']);
 
         $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');

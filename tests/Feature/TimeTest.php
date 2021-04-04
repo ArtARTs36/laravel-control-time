@@ -2,6 +2,7 @@
 
 namespace ArtARTs36\ControlTime\Tests\Feature;
 
+use ArtARTs36\ControlTime\Models\Subject;
 use ArtARTs36\ControlTime\Models\Time;
 use ArtARTs36\ControlTime\Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -17,6 +18,8 @@ class TimeTest extends TestCase
         parent::setUp();
 
         $this->setUpFaker();
+
+        $this->seed(\ControlTimeSubjectTypeSeeder::class);
     }
 
     /**
@@ -125,6 +128,7 @@ class TimeTest extends TestCase
     {
         $time = factory(Time::class)->make();
         $time->{Time::FIELD_EMPLOYEE_ID} = $this->createEmployee()->id;
+        $time->{Time::FIELD_SUBJECT_ID} = Subject::query()->inRandomOrder()->first()->id;
 
         return $time;
     }

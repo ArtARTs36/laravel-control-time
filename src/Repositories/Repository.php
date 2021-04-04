@@ -10,9 +10,14 @@ abstract class Repository
 {
     abstract protected function getModelClass(): string;
 
-    public function find(int $id): Model
+    public function find(int $id): ?Model
     {
         return $this->newQuery()->find($id);
+    }
+
+    public function findOrFail(int $id): Model
+    {
+        return $this->newQuery()->findOrFail($id);
     }
 
     public function all(): Collection

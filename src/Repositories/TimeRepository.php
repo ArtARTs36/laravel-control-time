@@ -5,9 +5,13 @@ namespace ArtARTs36\ControlTime\Repositories;
 use ArtARTs36\ControlTime\Models\Time;
 use ArtARTs36\ControlTime\Support\Proxy;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Database\Eloquent\Model;
 
 class TimeRepository extends Repository
 {
+    /**
+     * @return Time|Model
+     */
     public function create(array $values): Time
     {
         return $this->newQuery()->create($values);
