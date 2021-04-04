@@ -25,6 +25,8 @@ class Subject extends Model
         self::FIELD_TYPE_ID,
     ];
 
+    protected $table = 'controltime_subjects';
+
     public function type(): BelongsTo
     {
         return $this->belongsTo(SubjectType::class);

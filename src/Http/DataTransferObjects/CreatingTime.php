@@ -17,4 +17,7 @@ class CreatingTime extends DataTransferObject
 
     /** @var string */
     public $comment;
+
+    /** @var int */
+    public $subject_id;
 }

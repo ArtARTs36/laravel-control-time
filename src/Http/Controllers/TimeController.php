@@ -44,7 +44,7 @@ class TimeController extends BaseController
     public function update(int $timeId, TimeStoreRequest $request, TimeCreator $creator): JsonResource
     {
         /** @var Time $time */
-        $time = $this->repository->find($timeId);
+        $time = $this->repository->findOrFail($timeId);
 
         return new JsonResource($creator->update(new CreatingTime($request->toArray()), $time));
     }

@@ -17,6 +17,7 @@ class ControlTimeCreateSubjectsTable extends Migration
             $table->bigIncrements('id');
             $table->string('slug');
             $table->string('title');
+            $table->timestamps();
         });
     }
 

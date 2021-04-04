@@ -26,12 +26,14 @@ class Time extends Model
     public const FULL_TIME = 8 * 60;
 
     public const RELATION_EMPLOYEE = 'employee';
+    public const FIELD_SUBJECT_ID = 'subject_id';
 
     protected $fillable = [
         self::FIELD_DATE,
         self::FIELD_EMPLOYEE_ID,
         self::FIELD_QUANTITY,
         self::FIELD_COMMENT,
+        self::FIELD_SUBJECT_ID,
     ];
 
     protected $table = 'controltime_times';

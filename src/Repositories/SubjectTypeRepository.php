@@ -23,4 +23,12 @@ class SubjectTypeRepository extends Repository
             SubjectType::FIELD_TITLE => $title,
         ]);
     }
+
+    /**
+     * @return Subject|Model|null
+     */
+    public function findBySlug(string $slug): ?Subject
+    {
+        return $this->newQuery()->where(SubjectType::FIELD_SLUG, $slug)->firstOrFail();
+    }
 }

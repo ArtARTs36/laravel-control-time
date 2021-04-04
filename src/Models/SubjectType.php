@@ -17,6 +17,8 @@ class SubjectType extends Model
 
     public $timestamps = false;
 
+    protected $table = 'controltime_subject_types';
+
     protected $fillable = [
         self::FIELD_SLUG,
         self::FIELD_TITLE,
