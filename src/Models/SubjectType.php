@@ -15,6 +15,10 @@ class SubjectType extends Model
     public const FIELD_SLUG = 'slug';
     public const FIELD_TITLE = 'title';
 
+    public const SLUG_TASK = 'task';
+    public const SLUG_VACATION = 'vacation';
+    public const SLUG_BUSINESS_TRIP = 'business_trip';
+
     public $timestamps = false;
 
     protected $table = 'controltime_subject_types';
