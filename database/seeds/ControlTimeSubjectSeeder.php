@@ -4,7 +4,7 @@ use ArtARTs36\ControlTime\Repositories\SubjectRepository;
 use ArtARTs36\ControlTime\Repositories\SubjectTypeRepository;
 use Illuminate\Database\Seeder;
 
-class ControlTimeSubjectTestSeeder extends Seeder
+class ControlTimeSubjectSeeder extends Seeder
 {
     public function run(): void
     {
