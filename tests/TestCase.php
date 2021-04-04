@@ -4,14 +4,11 @@ namespace ArtARTs36\ControlTime\Tests;
 
 use ArtARTs36\ControlTime\Providers\ControlTimeProvider;
 use ArtARTs36\ControlTime\Tests\Prototypes\User;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Str;
-use Orchestra\Testbench\Concerns\Database\WithSqlite;
 
 abstract class TestCase extends \Orchestra\Testbench\TestCase
 {
-    use WithSqlite;
     use DatabaseTransactions;
 
     public function setup() : void
@@ -30,8 +27,6 @@ abstract class TestCase extends \Orchestra\Testbench\TestCase
 
     protected function getEnvironmentSetUp($app)
     {
-        $this->hotfixForSqliteSchemaBuilder();
-
         $app['config']->set('app.key', 'AckfSECXIvnK5r28GVIWUAxmbBSjTsmF');
         $app['config']->set('database.default', 'testing');
         $app['config']->set('database.connections.testing', [
