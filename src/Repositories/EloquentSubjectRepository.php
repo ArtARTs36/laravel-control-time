@@ -2,10 +2,11 @@
 
 namespace ArtARTs36\ControlTime\Repositories;
 
+use ArtARTs36\ControlTime\Contracts\SubjectRepository;
 use ArtARTs36\ControlTime\Models\Subject;
 use Illuminate\Database\Eloquent\Model;
 
-class SubjectRepository extends Repository
+class EloquentSubjectRepository extends Repository implements SubjectRepository
 {
     protected function getModelClass(): string
     {

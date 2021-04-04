@@ -2,12 +2,21 @@
 
 namespace ArtARTs36\ControlTime\Providers;
 
+use ArtARTs36\ControlTime\Contracts\SubjectRepository;
+use ArtARTs36\ControlTime\Contracts\SubjectTypeRepository;
+use ArtARTs36\ControlTime\Repositories\EloquentSubjectRepository;
+use ArtARTs36\ControlTime\Repositories\EloquentSubjectTypeRepository;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory as EloquentFactory;
 
 class ControlTimeProvider extends ServiceProvider
 {
     protected const ROOT_PATH = __DIR__ . '/../../';
+
+    public $bindings = [
+        SubjectTypeRepository::class => EloquentSubjectTypeRepository::class,
+        SubjectRepository::class => EloquentSubjectRepository::class,
+    ];
 
     /**
      * @throws \Illuminate\Contracts\Container\BindingResolutionException

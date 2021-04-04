@@ -20,6 +20,7 @@ class TimeTest extends TestCase
         $this->setUpFaker();
 
         $this->seed(\ControlTimeSubjectTypeSeeder::class);
+        $this->seed(\ControlTimeSubjectSeeder::class);
     }
 
     /**

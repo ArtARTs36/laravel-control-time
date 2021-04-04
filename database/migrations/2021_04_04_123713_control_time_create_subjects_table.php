@@ -15,8 +15,12 @@ class ControlTimeCreateSubjectsTable extends Migration
     {
         Schema::create('controltime_subjects', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('slug');
+            $table->string('code');
             $table->string('title');
+
+            $table->unsignedBigInteger('type_id');
+            $table->foreign('type_id')->references('id')->on('controltime_subject_types');
+
             $table->timestamps();
         });
     }

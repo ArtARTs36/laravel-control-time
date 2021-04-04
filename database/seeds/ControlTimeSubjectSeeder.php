@@ -1,15 +1,15 @@
 <?php
 
-use ArtARTs36\ControlTime\Repositories\SubjectRepository;
-use ArtARTs36\ControlTime\Repositories\SubjectTypeRepository;
+use ArtARTs36\ControlTime\Repositories\EloquentSubjectRepository;
+use ArtARTs36\ControlTime\Repositories\EloquentSubjectTypeRepository;
 use Illuminate\Database\Seeder;
 
 class ControlTimeSubjectSeeder extends Seeder
 {
     public function run(): void
     {
-        /** @var SubjectRepository $repo */
-        $repo = app(SubjectRepository::class);
+        /** @var EloquentSubjectRepository $repo */
+        $repo = app(EloquentSubjectRepository::class);
 
         $data = [
             'vacation' => [
@@ -27,7 +27,7 @@ class ControlTimeSubjectSeeder extends Seeder
 
         foreach ($data as $typeSlug => $subjects) {
             /** @var \ArtARTs36\ControlTime\Models\SubjectType $type */
-            $type = app(SubjectTypeRepository::class)->findBySlug($typeSlug);
+            $type = app(EloquentSubjectTypeRepository::class)->findBySlug($typeSlug);
 
             foreach ($subjects as $code => $title) {
                 $repo->create($code, $title, $type->id);
