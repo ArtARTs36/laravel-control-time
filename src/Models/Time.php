@@ -46,17 +46,11 @@ class Time extends Model
         });
     }
 
-    /**
-     * @return BelongsTo
-     */
     public function employee(): BelongsTo
     {
         return $this->belongsTo(config('controltime.employee.model_class'));
     }
 
-    /**
-     * @return int
-     */
     public function getHours(): int
     {
         return (int) ($this->quantity / 60);
