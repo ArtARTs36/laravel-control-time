@@ -30,7 +30,7 @@ class ControlTimeSubjectSeeder extends Seeder
             $type = app(EloquentSubjectTypeRepository::class)->findBySlug($typeSlug);
 
             foreach ($subjects as $code => $title) {
-                $repo->create($code, $title, $type->id);
+                $repo->create($title, $code, $type->id);
             }
         }
     }
