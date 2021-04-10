@@ -3,6 +3,7 @@
 namespace ArtARTs36\ControlTime\Http\DataTransferObjects;
 
 use ArtARTs36\ControlTime\Http\Support\DataTransferObject;
+use Carbon\Carbon;
 
 class CreatingTime extends DataTransferObject
 {
@@ -20,4 +21,9 @@ class CreatingTime extends DataTransferObject
 
     /** @var int */
     public $subject_id;
+
+    public function getDate(): \DateTimeInterface
+    {
+        return Carbon::parse($this->date);
+    }
 }
