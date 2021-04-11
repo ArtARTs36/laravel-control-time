@@ -9,12 +9,12 @@ trait DbUpsert
 {
     abstract protected function newQuery(): Builder;
 
-    public function upsert(array $values, array $conflicts, array $mergeFields = [], array $ignoreFields = []): bool
+    public function upsert(array $values, array $conflicts, array $mergeFields = [], array $ignoreFields = []): int
     {
         $values = array_filter($values);
 
         if (count($values) === 0) {
-            return true;
+            return 0;
         }
 
         $eloquentQuery = $this->newQuery();
@@ -27,7 +27,6 @@ trait DbUpsert
         //
 
         $sets = $this->buildSetsStringForUpsert(
-            #array_keys($values[array_key_first($values)]),
             $eloquentQuery->getModel()->getFillable(),
             $mergeFields,
             $ignoreFields

@@ -27,9 +27,8 @@ class TimeCreator
 
     /**
      * @param array<CreatingTime> $timesData
-     * @return bool
      */
-    public function insertMany(array $timesData): bool
+    public function insertMany(array $timesData): int
     {
         $inserts = [];
         $date = new \DateTime();
