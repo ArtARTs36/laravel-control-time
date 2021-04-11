@@ -5,7 +5,6 @@ namespace ArtARTs36\ControlTime\Services;
 use ArtARTs36\ControlTime\Contracts\TimeFileLoader;
 use ArtARTs36\ControlTime\Exceptions\TimeAlreadyExists;
 use ArtARTs36\ControlTime\Http\DataTransferObjects\CreatingTime;
-use ArtARTs36\ControlTime\Http\Requests\TimeStoreRequest;
 use ArtARTs36\ControlTime\Models\Time;
 use ArtARTs36\ControlTime\Repositories\TimeRepository;
 
@@ -30,9 +29,10 @@ class TimeCreator
      * @param array<CreatingTime> $timesData
      * @return bool
      */
-    protected function insertMany(array $timesData): bool
+    public function insertMany(array $timesData): bool
     {
         $inserts = [];
+        $date = new \DateTime();
 
         foreach ($timesData as $time) {
             $inserts[] = [
@@ -41,10 +41,16 @@ class TimeCreator
                 Time::FIELD_EMPLOYEE_ID => $time->employee_id,
                 Time::FIELD_COMMENT => $time->comment,
                 Time::FIELD_QUANTITY => $time->quantity,
+                Time::CREATED_AT => $date,
             ];
         }
 
-        return $this->repository->inserts($inserts);
+        return $this->repository->upsert(
+            $inserts,
+            Time::UNIQUE_KEYS,
+            [Time::UPDATED_AT => $date->format('Y-m-d H:i:s')],
+            [Time::CREATED_AT]
+        );
     }
 
     public function create(CreatingTime $data): Time

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ControlTimeAddSubjectIdIntoTimesTable extends Migration
+class ControlTimeAddUniqueKeyIntoTimesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,8 +14,7 @@ class ControlTimeAddSubjectIdIntoTimesTable extends Migration
     public function up()
     {
         Schema::table('controltime_times', function (Blueprint $table) {
-            $table->unsignedBigInteger('subject_id');
-            $table->foreign('subject_id')->references('id')->on('controltime_subjects');
+            $table->unique(['date', 'employee_id', 'subject_id'], 'unique_date_employee_subject');
         });
     }
 
@@ -28,7 +27,7 @@ class ControlTimeAddSubjectIdIntoTimesTable extends Migration
     {
         Schema::table('controltime_times', function (Blueprint $table) {
             #$table->dropForeign('subject_id');
-            #$table->dropColumn('subject_id');
+            $table->dropColumn('subject_id');
         });
     }
 }

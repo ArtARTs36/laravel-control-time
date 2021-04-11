@@ -3,6 +3,7 @@
 namespace ArtARTs36\ControlTime\Repositories;
 
 use ArtARTs36\ControlTime\Models\Time;
+use ArtARTs36\ControlTime\Support\DbUpsert;
 use ArtARTs36\ControlTime\Support\Proxy;
 use ArtARTs36\EmployeeInterfaces\Employee\EmployeeInterface;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
@@ -10,6 +11,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class TimeRepository extends Repository
 {
+    use DbUpsert;
+
     /**
      * @return Time|Model
      */
