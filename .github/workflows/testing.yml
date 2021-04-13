@@ -17,6 +17,8 @@ jobs:
     - uses: nanasess/setup-php@master
       with:
         php-version: '7.3'
+        tools: pecl
+        extensions: xlswriter
 
     - name: Validate composer.json
       run: composer validate
