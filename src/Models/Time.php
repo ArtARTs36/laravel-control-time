@@ -23,6 +23,9 @@ class Time extends Model
     public const FIELD_QUANTITY = 'quantity';
     public const FIELD_COMMENT = 'comment';
 
+    public const UNIQUE_KEY_DATE_EMPLOYEE_SUBJECT = 'unique_date_employee_subject';
+    public const UNIQUE_KEYS = [Time::FIELD_SUBJECT_ID, Time::FIELD_DATE, Time::FIELD_EMPLOYEE_ID];
+
     public const FULL_TIME = 8 * 60;
 
     public const RELATION_EMPLOYEE = 'employee';
@@ -34,6 +37,8 @@ class Time extends Model
         self::FIELD_QUANTITY,
         self::FIELD_COMMENT,
         self::FIELD_SUBJECT_ID,
+        self::CREATED_AT,
+        self::UPDATED_AT,
     ];
 
     protected $table = 'controltime_times';

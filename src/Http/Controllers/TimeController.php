@@ -3,15 +3,19 @@
 namespace ArtARTs36\ControlTime\Http\Controllers;
 
 use ArtARTs36\ControlTime\Http\DataTransferObjects\CreatingTime;
+use ArtARTs36\ControlTime\Http\Requests\LoadFromFileRequest;
 use ArtARTs36\ControlTime\Http\Requests\TimeStoreRequest;
 use ArtARTs36\ControlTime\Http\Requests\TimeUpdateCommentRequest;
 use ArtARTs36\ControlTime\Http\Requests\TimeUpdateQuantityRequest;
+use ArtARTs36\ControlTime\Http\Responses\CountResponse;
 use ArtARTs36\ControlTime\Http\Responses\DestroyResponse;
+use ArtARTs36\ControlTime\Loaders\Excel\TimeXlsxLoader;
 use ArtARTs36\ControlTime\Models\Time;
 use ArtARTs36\ControlTime\Repositories\TimeRepository;
 use ArtARTs36\ControlTime\Services\TimeCreator;
 use ArtARTs36\ControlTime\Services\TimeService;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class TimeController extends BaseController
@@ -71,5 +75,15 @@ class TimeController extends BaseController
             $this->repository->find($timeId),
             $request->get(Time::FIELD_COMMENT)
         ));
+    }
+
+    public function createFromExcel(
+        LoadFromFileRequest $request,
+        TimeCreator $creator,
+        TimeXlsxLoader $loader
+    ): CountResponse {
+        return new CountResponse(
+            $creator->fromFile($loader, $request->file(LoadFromFileRequest::FIELD_FILE)->path())
+        );
     }
 }

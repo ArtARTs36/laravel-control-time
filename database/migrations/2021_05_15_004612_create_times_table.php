@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTimeTable extends Migration
+class CreateTimesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -25,6 +25,11 @@ class CreateTimeTable extends Migration
             $table->foreign('employee_id')
                 ->references('id')
                 ->on(\ArtARTs36\ControlTime\Support\Proxy::getEmployeeTable());
+
+            $table->unsignedBigInteger('subject_id');
+            $table->foreign('subject_id')->references('id')->on('controltime_subjects');
+
+            $table->unique(['date', 'employee_id', 'subject_id'], 'unique_date_employee_subject');
         });
     }
 
