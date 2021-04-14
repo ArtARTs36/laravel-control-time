@@ -13,8 +13,8 @@ $factory->define(Time::class, function (Faker $faker) {
         Time::FIELD_QUANTITY => rand(0, Time::FULL_TIME),
         Time::FIELD_COMMENT => $faker->text(200),
         Time::FIELD_SUBJECT_ID => factory(Subject::class)->create()->id,
-        Time::FIELD_EMPLOYEE_ID => User::query()->create([
-            'name' => 'test_name',
-        ])->id,
+        Time::FIELD_EMPLOYEE_ID => factory(config(
+            'controltime.employee.model_class'
+        ))->create()->id,
     ];
 });
