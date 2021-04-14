@@ -11,7 +11,7 @@ class LoadFromFileRequest extends FormRequest
     public function rules(): array
     {
         return [
-            static::FIELD_FILE => 'file',
+            static::FIELD_FILE => 'required|file',
         ];
     }
 }
