@@ -2,13 +2,14 @@
 
 namespace ArtARTs36\ControlTime\Reports\Target\Period;
 
+use ArtARTs36\ControlTime\Contracts\Report;
 use ArtARTs36\ControlTime\Contracts\ReportFile;
 use ArtARTs36\ControlTime\Models\Time;
 use ArtARTs36\ControlTime\Reports\Data\ReportFilter;
 use ArtARTs36\ControlTime\Repositories\TimeRepository;
 use Illuminate\Support\Collection;
 
-abstract class PeriodReport
+abstract class PeriodReport implements Report
 {
     protected $repo;
 
