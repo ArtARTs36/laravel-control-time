@@ -5,6 +5,8 @@ use ArtARTs36\ControlTime\Loaders\Excel\Columns\DateColumn;
 use ArtARTs36\ControlTime\Loaders\Excel\Columns\SubjectCodeColumn;
 use ArtARTs36\ControlTime\Loaders\Excel\Columns\TabNumberColumn;
 use ArtARTs36\ControlTime\Loaders\Excel\Columns\TimeQuantityColumn;
+use ArtARTs36\ControlTime\Reports\Target\Period\CsvPeriodReport;
+use ArtARTs36\ControlTime\Reports\Target\Period\JsonPeriodReport;
 
 return [
     'employee' => [
@@ -33,6 +35,12 @@ return [
         'api' => [
             'middleware' => [],
             'prefix' => 'controltime',
+        ],
+    ],
+    'reports' => [
+        'period' => [
+            'csv' => CsvPeriodReport::class,
+            'json' => JsonPeriodReport::class,
         ],
     ],
 ];

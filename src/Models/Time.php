@@ -3,6 +3,7 @@
 namespace ArtARTs36\ControlTime\Models;
 
 use ArtARTs36\ControlTime\Support\Proxy;
+use ArtARTs36\EmployeeInterfaces\Employee\EmployeeInterface;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -12,6 +13,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property int $date
  * @property int $quantity
  * @property int $employee_id
+ * @property EmployeeInterface $employee
  * @property string $comment
  * @property int $subject_id
  * @property Subject $subject

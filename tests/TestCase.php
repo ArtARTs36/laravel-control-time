@@ -4,6 +4,9 @@ namespace ArtARTs36\ControlTime\Tests;
 
 use ArtARTs36\ControlTime\Providers\ControlTimeProvider;
 use ArtARTs36\ControlTime\Tests\Prototypes\User;
+use ArtARTs36\FileStorageContracts\FileStorage;
+use ArtARTs36\LaravelFileStorage\Providers\FileStorageProvider;
+use ArtARTs36\LaravelFileStorage\Services\LocalFileStorage;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Str;
 
@@ -35,11 +38,16 @@ abstract class TestCase extends \Orchestra\Testbench\TestCase
             'database' => ':memory:',
             'prefix'   => '',
         ]);
+
+        $app->bind(FileStorage::class, LocalFileStorage::class);
     }
 
     protected function getPackageProviders($app)
     {
-        return [ControlTimeProvider::class];
+        return [
+            ControlTimeProvider::class,
+            FileStorageProvider::class,
+        ];
     }
 
     protected function createEmployee()
