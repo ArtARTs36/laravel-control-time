@@ -16,16 +16,13 @@ class TimeReportPeriodTest extends TestCase
         $request = function (\DateTimeInterface $start, \DateTimeInterface $end) {
             return $this
                 ->getJson(
-                    'controltime/times/reports/period/json/'
+                    'controltime/times/reports/period/csv/'
                     . '?date_start=' . $start->format('Y-m-d H:i:s')
                     . '&date_end=' . $end->format('Y-m-d H:i:s')
                 );
         };
 
         $hash = '6b10dc93c7ace9671534645bbb3ee9c9';
-
-        dd($request(Carbon::now(), Carbon::now())
-                ->baseResponse);
 
         self::assertTrue($request(Carbon::now(), Carbon::now())
             ->baseResponse
