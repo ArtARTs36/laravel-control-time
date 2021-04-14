@@ -6,6 +6,7 @@ use ArtARTs36\ControlTime\Loaders\Excel\Columns\SubjectCodeColumn;
 use ArtARTs36\ControlTime\Loaders\Excel\Columns\TabNumberColumn;
 use ArtARTs36\ControlTime\Loaders\Excel\Columns\TimeQuantityColumn;
 use ArtARTs36\ControlTime\Reports\Target\Period\CsvPeriodReport;
+use ArtARTs36\ControlTime\Reports\Target\Period\JsonPeriodReport;
 
 return [
     'employee' => [
@@ -39,6 +40,7 @@ return [
     'reports' => [
         'period' => [
             'csv' => CsvPeriodReport::class,
+            'json' => JsonPeriodReport::class,
         ],
     ],
 ];
