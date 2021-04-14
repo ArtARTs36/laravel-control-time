@@ -2,15 +2,15 @@
 
 namespace ArtARTs36\ControlTime\Reports\Data;
 
+use ArtARTs36\ControlTime\Data\Period;
+
 class ReportFilter
 {
     public $employees;
 
     public $subjects;
 
-    public $start;
-
-    public $end;
+    public $period;
 
     /**
      * @param array<int> $employees
@@ -19,12 +19,10 @@ class ReportFilter
     public function __construct(
         array $employees,
         array $subjects,
-        \DateTimeInterface $start,
-        \DateTimeInterface $end
+        Period $period
     ) {
         $this->employees = $employees;
         $this->subjects = $subjects;
-        $this->start = $start;
-        $this->end = $end;
+        $this->period = $period;
     }
 }
