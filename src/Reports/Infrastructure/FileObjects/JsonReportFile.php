@@ -2,10 +2,11 @@
 
 namespace ArtARTs36\ControlTime\Reports\Infrastructure\FileObjects;
 
+use ArtARTs36\ControlTime\Contracts\Report;
 use ArtARTs36\ControlTime\Contracts\ReportFile;
 use ArtARTs36\ControlTime\Reports\Infrastructure\Support\SaveContent;
 
-class JsonReportFile implements ReportFile
+class JsonReportFile extends AbstractReportFile implements ReportFile
 {
     use SaveContent;
 
@@ -13,14 +14,16 @@ class JsonReportFile implements ReportFile
 
     protected $extension = 'json';
 
-    public function __construct(string $content)
+    public function __construct(Report $report, string $content)
     {
         $this->content = $content;
+
+        parent::__construct($report);
     }
 
-    public static function fromArray(array $data): self
+    public static function fromArray(Report $report, array $data): self
     {
-        return new static(json_encode($data));
+        return new static($report, json_encode($data));
     }
 
     protected function getContent(): string

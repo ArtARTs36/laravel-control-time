@@ -6,9 +6,11 @@ use ArtARTs36\ControlTime\Contracts\ReportFile;
 use ArtARTs36\ControlTime\Reports\Data\ReportBuildContext;
 use ArtARTs36\ControlTime\Reports\Data\ReportFilter;
 use ArtARTs36\ControlTime\Reports\Data\ReportMeta;
+use ArtARTs36\ControlTime\Reports\Events\ReportGenerated;
 use ArtARTs36\ControlTime\Reports\Infrastructure\ReportBuilder;
 use ArtARTs36\FileStorageContracts\FileStorage;
 use ArtARTs36\FileStorageContracts\SectionRepository;
+use Illuminate\Contracts\Events\Dispatcher;
 
 class ReportService
 {
@@ -18,11 +20,18 @@ class ReportService
 
     protected $sections;
 
-    public function __construct(ReportBuilder $reports, FileStorage $files, SectionRepository $sections)
-    {
+    protected $events;
+
+    public function __construct(
+        ReportBuilder $reports,
+        FileStorage $files,
+        SectionRepository $sections,
+        Dispatcher $events
+    ) {
         $this->reports = $reports;
         $this->files = $files;
         $this->sections = $sections;
+        $this->events = $events;
     }
 
     /**
@@ -32,11 +41,12 @@ class ReportService
      */
     public function createReport(ReportFilter $filter, string $name, string $extension): string
     {
-        return $this->files->getRealPath(
-            $this
-                ->buildReport($filter, $name, $extension)
-                ->save($this->files, new ReportMeta($name, $this->sections->findOrCreate('controltime')))->getFile()
-        );
+        $report = $this->buildReport($filter, $name, $extension);
+        $fileAlias = $report->save($this->files, new ReportMeta($name, $this->sections->findOrCreate('controltime')));
+
+        $this->events->dispatch(new ReportGenerated($report, $fileAlias));
+
+        return $this->files->getRealPath($fileAlias->getFile());
     }
 
     /**

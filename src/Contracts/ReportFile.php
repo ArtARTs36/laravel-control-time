@@ -9,4 +9,6 @@ use ArtARTs36\FileStorageContracts\FileStorage;
 interface ReportFile
 {
     public function save(FileStorage $storage, ReportMeta $meta): FileAlias;
+
+    public function getReport(): Report;
 }

@@ -23,7 +23,7 @@ class CsvPeriodReport extends PeriodReport implements Report
 
     protected function makeFile(Collection $data): ReportFile
     {
-        return new CsvReportFile($this->makeCsvWriter(
+        return new CsvReportFile($this, $this->makeCsvWriter(
             $this->headers,
             $this->prepareRecords($data)
         ));

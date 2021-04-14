@@ -11,7 +11,7 @@ class JsonPeriodReport extends PeriodReport
 {
     protected function makeFile(Collection $data): ReportFile
     {
-        return JsonReportFile::fromArray($this->prepareData($data));
+        return JsonReportFile::fromArray($this, $this->prepareData($data));
     }
 
     protected function prepareData(Collection $data): array
