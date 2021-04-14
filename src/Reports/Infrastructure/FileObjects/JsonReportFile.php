@@ -3,28 +3,19 @@
 namespace ArtARTs36\ControlTime\Reports\Infrastructure\FileObjects;
 
 use ArtARTs36\ControlTime\Contracts\ReportFile;
+use ArtARTs36\ControlTime\Reports\Infrastructure\Support\SaveContent;
 
 class JsonReportFile implements ReportFile
 {
-    protected $json;
+    use SaveContent;
 
-    public function __construct(string $json)
+    public function __construct(string $content)
     {
-        $this->json = $json;
+        $this->content = $content;
     }
 
     public static function fromArray(array $data): self
     {
         return new static(json_encode($data));
-    }
-
-    public function saveAs(string $path): bool
-    {
-        return file_put_contents($path, $this->getContent()) !== false;
-    }
-
-    public function getContent(): string
-    {
-        return $this->json;
     }
 }

@@ -3,6 +3,8 @@
 namespace ArtARTs36\ControlTime\Reports\Infrastructure\FileObjects;
 
 use ArtARTs36\ControlTime\Contracts\ReportFile;
+use ArtARTs36\FileStorageContracts\FileAlias;
+use ArtARTs36\FileStorageContracts\FileStorage;
 use League\Csv\Writer;
 
 class CsvReportFile implements ReportFile
@@ -14,12 +16,12 @@ class CsvReportFile implements ReportFile
         $this->writer = $writer;
     }
 
-    public function saveAs(string $path): bool
+    public function save(FileStorage $storage, string $name): FileAlias
     {
-        return file_put_contents($path, $this->getContent()) !== false;
+        return $storage->saveByContent($this->getContent(), $name, 'csv');
     }
 
-    public function getContent(): string
+    protected function getContent(): string
     {
         return $this->writer->toString();
     }

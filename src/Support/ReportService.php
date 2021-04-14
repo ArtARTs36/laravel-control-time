@@ -27,11 +27,11 @@ class ReportService
      */
     public function createReport(ReportFilter $filter, string $name, string $extension): string
     {
-        return $this->files->getRealPath($this->files->saveByContent(
-            $this->buildReport($filter, $name, $extension)->getContent(),
-            $name,
-            $extension
-        )->getFile());
+        return $this->files->getRealPath(
+            $this
+                ->buildReport($filter, $name, $extension)
+                ->save($this->files, $name)->getFile()
+        );
     }
 
     /**

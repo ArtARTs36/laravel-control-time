@@ -2,9 +2,10 @@
 
 namespace ArtARTs36\ControlTime\Contracts;
 
+use ArtARTs36\FileStorageContracts\FileAlias;
+use ArtARTs36\FileStorageContracts\FileStorage;
+
 interface ReportFile
 {
-    public function saveAs(string $path): bool;
-
-    public function getContent(): string;
+    public function save(FileStorage $storage, string $name): FileAlias;
 }
