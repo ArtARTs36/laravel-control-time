@@ -6,6 +6,7 @@ use ArtARTs36\ControlTime\Contracts\SubjectRepository;
 use ArtARTs36\ControlTime\Contracts\SubjectTypeRepository;
 use ArtARTs36\ControlTime\Loaders\Excel\Columns\ColumnsDict;
 use ArtARTs36\ControlTime\Loaders\Excel\Columns\SubjectCodeColumn;
+use ArtARTs36\ControlTime\Reports\Data\ReportsDict;
 use ArtARTs36\ControlTime\Repositories\EloquentSubjectRepository;
 use ArtARTs36\ControlTime\Repositories\EloquentSubjectTypeRepository;
 use Illuminate\Support\ServiceProvider;
@@ -40,6 +41,12 @@ class ControlTimeProvider extends ServiceProvider
         $this->app->register(RouteProvider::class);
         $this->app->bind(ColumnsDict::class, function () {
             return new ColumnsDict($this->getInstances(config('controltime.time.load_from_file.excel.fields')));
+        });
+
+        $this->app->bind(ReportsDict::class, function () {
+            return new ReportsDict(
+                $this->app['config']->get('controltime.reports')
+            );
         });
     }
 

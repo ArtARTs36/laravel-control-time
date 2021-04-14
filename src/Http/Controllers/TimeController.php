@@ -15,7 +15,6 @@ use ArtARTs36\ControlTime\Repositories\TimeRepository;
 use ArtARTs36\ControlTime\Services\TimeCreator;
 use ArtARTs36\ControlTime\Services\TimeService;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
-use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class TimeController extends BaseController
