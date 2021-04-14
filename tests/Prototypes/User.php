@@ -53,4 +53,9 @@ class User extends Model implements \ArtARTs36\ControlTime\Contracts\User, Emplo
     {
         // TODO: Implement getCurrentWorkCondition() method.
     }
+
+    public function getWorkConditions(): array
+    {
+        return [];
+    }
 }

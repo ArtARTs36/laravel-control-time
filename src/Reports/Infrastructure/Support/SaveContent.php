@@ -2,17 +2,16 @@
 
 namespace ArtARTs36\ControlTime\Reports\Infrastructure\Support;
 
+use ArtARTs36\ControlTime\Reports\Data\ReportMeta;
 use ArtARTs36\FileStorageContracts\FileAlias;
 use ArtARTs36\FileStorageContracts\FileStorage;
 
 trait SaveContent
 {
-    protected $content;
+    abstract protected function getContent(): string;
 
-    protected $extension = '';
-
-    public function save(FileStorage $storage, string $name): FileAlias
+    public function save(FileStorage $storage, ReportMeta $meta): FileAlias
     {
-        return $storage->saveByContent($this->content, $name, $this->extension);
+        return $storage->saveByContent($this->getContent(), $meta->name, $this->extension, $meta->fileSection);
     }
 }

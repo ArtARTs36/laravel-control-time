@@ -5,8 +5,10 @@ namespace ArtARTs36\ControlTime\Support;
 use ArtARTs36\ControlTime\Contracts\ReportFile;
 use ArtARTs36\ControlTime\Reports\Data\ReportBuildContext;
 use ArtARTs36\ControlTime\Reports\Data\ReportFilter;
+use ArtARTs36\ControlTime\Reports\Data\ReportMeta;
 use ArtARTs36\ControlTime\Reports\Infrastructure\ReportBuilder;
 use ArtARTs36\FileStorageContracts\FileStorage;
+use ArtARTs36\FileStorageContracts\SectionRepository;
 
 class ReportService
 {
@@ -14,10 +16,13 @@ class ReportService
 
     protected $files;
 
-    public function __construct(ReportBuilder $reports, FileStorage $files)
+    protected $sections;
+
+    public function __construct(ReportBuilder $reports, FileStorage $files, SectionRepository $sections)
     {
         $this->reports = $reports;
         $this->files = $files;
+        $this->sections = $sections;
     }
 
     /**
@@ -30,7 +35,7 @@ class ReportService
         return $this->files->getRealPath(
             $this
                 ->buildReport($filter, $name, $extension)
-                ->save($this->files, $name)->getFile()
+                ->save($this->files, new ReportMeta($name, $this->sections->findOrCreate('controltime')))->getFile()
         );
     }
 

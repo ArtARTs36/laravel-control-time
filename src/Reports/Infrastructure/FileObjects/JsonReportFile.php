@@ -9,6 +9,10 @@ class JsonReportFile implements ReportFile
 {
     use SaveContent;
 
+    protected $content;
+
+    protected $extension = 'json';
+
     public function __construct(string $content)
     {
         $this->content = $content;
@@ -17,5 +21,10 @@ class JsonReportFile implements ReportFile
     public static function fromArray(array $data): self
     {
         return new static(json_encode($data));
+    }
+
+    protected function getContent(): string
+    {
+        return $this->content;
     }
 }
