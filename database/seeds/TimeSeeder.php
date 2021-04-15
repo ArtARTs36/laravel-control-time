@@ -16,11 +16,14 @@ class TimeSeeder extends \Illuminate\Database\Seeder
         $subjects = app(SubjectRepository::class)->all();
 
         foreach ($employees as $employee) {
-            for ($i = 0; $i < 20; $i++) {
-                factory(Time::class)->create([
-                    Time::FIELD_EMPLOYEE_ID => $employee->getId(),
-                    Time::FIELD_SUBJECT_ID => $subjects->random()->id,
-                ]);
+            for ($i = 1; $i < 20; $i++) {
+                foreach ($subjects as $subject) {
+                    factory(Time::class)->create([
+                        Time::FIELD_EMPLOYEE_ID => $employee->getId(),
+                        Time::FIELD_SUBJECT_ID => $subject->id,
+                        Time::FIELD_DATE => \Carbon\Carbon::parse("+ $i ago"),
+                    ]);
+                }
             }
         }
     }
