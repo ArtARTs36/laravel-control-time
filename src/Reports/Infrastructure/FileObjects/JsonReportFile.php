@@ -14,16 +14,16 @@ class JsonReportFile extends AbstractReportFile implements ReportFile
 
     protected $extension = 'json';
 
-    public function __construct(Report $report, string $content)
+    public function __construct(Report $report, string $content, string $title)
     {
         $this->content = $content;
 
-        parent::__construct($report);
+        parent::__construct($report, $title);
     }
 
-    public static function fromArray(Report $report, array $data): self
+    public static function fromArray(Report $report, array $data, string $title): self
     {
-        return new static($report, json_encode($data));
+        return new static($report, json_encode($data), $title);
     }
 
     protected function getContent(): string

@@ -6,7 +6,6 @@ use ArtARTs36\ControlTime\Contracts\ReportFile;
 use ArtARTs36\ControlTime\Reports\Data\DownloadReport;
 use ArtARTs36\ControlTime\Reports\Data\ReportBuildContext;
 use ArtARTs36\ControlTime\Reports\Data\ReportFilter;
-use ArtARTs36\ControlTime\Reports\Data\ReportMeta;
 use ArtARTs36\ControlTime\Reports\Events\ReportGenerated;
 use ArtARTs36\ControlTime\Reports\Infrastructure\ReportBuilder;
 use ArtARTs36\FileStorageContracts\FileStorage;
@@ -42,11 +41,11 @@ class ReportService
     public function createReport(ReportFilter $filter, string $name, string $extension): DownloadReport
     {
         $report = $this->buildReport($filter, $name, $extension);
-        $fileAlias = $report->save($this->files, new ReportMeta($name, $this->sections->findOrCreate('controltime')));
+        $fileAlias = $report->save($this->files, $this->sections->findOrCreate('controltime'));
 
         $this->events->dispatch(new ReportGenerated($report, $fileAlias));
 
-        return new DownloadReport($this->files->getRealPath($fileAlias->getFile()), $fileAlias->getName());
+        return new DownloadReport($this->files->getRealPath($fileAlias->getFile()), $fileAlias->getFileName());
     }
 
     /**

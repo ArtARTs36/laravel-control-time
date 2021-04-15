@@ -9,9 +9,9 @@ use Illuminate\Support\Collection;
 
 class JsonPeriodReport extends PeriodReport
 {
-    protected function makeFile(Collection $data): ReportFile
+    protected function makeFile(Collection $data, string $title): ReportFile
     {
-        return JsonReportFile::fromArray($this, $this->prepareData($data));
+        return JsonReportFile::fromArray($this, $this->prepareData($data), $title);
     }
 
     protected function prepareData(Collection $data): array

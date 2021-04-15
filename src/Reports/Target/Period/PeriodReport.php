@@ -15,9 +15,8 @@ abstract class PeriodReport implements Report
 
     /**
      * @param Collection|iterable<Time> $data
-     * @return ReportFile
      */
-    abstract protected function makeFile(Collection $data): ReportFile;
+    abstract protected function makeFile(Collection $data, string $title): ReportFile;
 
     public function __construct(TimeRepository $repo)
     {
@@ -26,6 +25,18 @@ abstract class PeriodReport implements Report
 
     public function make(ReportFilter $filter): ReportFile
     {
-        return $this->makeFile($this->repo->getByPeriod($filter->period, $filter->employees, $filter->subjects));
+        return $this
+            ->makeFile(
+                $this->repo->getByPeriod($filter->period, $filter->employees, $filter->subjects),
+                $this->buildTitle($filter)
+            );
+    }
+
+    protected function buildTitle(ReportFilter $filter): string
+    {
+        return 'Отчет за: '
+            . $filter->period->start->format('Y-m-d')
+            . ' - '
+            . $filter->period->end->format('Y-m-d');
     }
 }

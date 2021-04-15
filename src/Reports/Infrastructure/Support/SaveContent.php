@@ -2,16 +2,23 @@
 
 namespace ArtARTs36\ControlTime\Reports\Infrastructure\Support;
 
-use ArtARTs36\ControlTime\Reports\Data\ReportMeta;
 use ArtARTs36\FileStorageContracts\FileAlias;
 use ArtARTs36\FileStorageContracts\FileStorage;
+use ArtARTs36\LaravelFileStorage\Models\Section;
 
 trait SaveContent
 {
     abstract protected function getContent(): string;
 
-    public function save(FileStorage $storage, ReportMeta $meta): FileAlias
+    abstract public function getTitle(): string;
+
+    public function save(FileStorage $storage, Section $section): FileAlias
     {
-        return $storage->saveByContent($this->getContent(), $meta->name, $this->extension, $meta->fileSection);
+        return $storage->saveByContent(
+            $this->getContent(),
+            $this->getTitle(),
+            $this->extension,
+            $section
+        );
     }
 }
