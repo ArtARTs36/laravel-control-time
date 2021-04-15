@@ -11,4 +11,6 @@ interface ReportFile
     public function save(FileStorage $storage, Section $section): FileAlias;
 
     public function getReport(): Report;
+
+    public function getTitle(): string;
 }

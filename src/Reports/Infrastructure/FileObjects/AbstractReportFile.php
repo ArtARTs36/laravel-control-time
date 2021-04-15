@@ -8,13 +8,21 @@ abstract class AbstractReportFile
 {
     private $report;
 
-    public function __construct(Report $report)
+    private $title;
+
+    public function __construct(Report $report, string $title)
     {
         $this->report = $report;
+        $this->title = $title;
     }
 
     public function getReport(): Report
     {
         return $this->report;
+    }
+
+    public function getTitle(): string
+    {
+        return $this->title;
     }
 }

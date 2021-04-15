@@ -10,8 +10,15 @@ trait SaveContent
 {
     abstract protected function getContent(): string;
 
+    abstract public function getTitle(): string;
+
     public function save(FileStorage $storage, Section $section): FileAlias
     {
-        return $storage->saveByContent($this->getContent(), '', $this->extension, $section);
+        return $storage->saveByContent(
+            $this->getContent(),
+            $this->getTitle(),
+            $this->extension,
+            $section
+        );
     }
 }

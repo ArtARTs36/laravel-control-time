@@ -15,11 +15,11 @@ class CsvReportFile extends AbstractReportFile implements ReportFile
 
     protected $extension = 'csv';
 
-    public function __construct(Report $report, Writer $writer)
+    public function __construct(Report $report, Writer $writer, string $title)
     {
         $this->writer = $writer;
 
-        parent::__construct($report);
+        parent::__construct($report, $title);
     }
 
     protected function getContent(): string

@@ -21,12 +21,16 @@ class CsvPeriodReport extends PeriodReport implements Report
         'Часы',
     ];
 
-    protected function makeFile(Collection $data): ReportFile
+    protected function makeFile(Collection $data, string $title): ReportFile
     {
-        return new CsvReportFile($this, $this->makeCsvWriter(
-            $this->headers,
-            $this->prepareRecords($data)
-        ));
+        return new CsvReportFile(
+            $this,
+            $this->makeCsvWriter(
+                $this->headers,
+                $this->prepareRecords($data)
+            ),
+            $title
+        );
     }
 
     protected function prepareRecords(Collection $data): array
