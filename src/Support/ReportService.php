@@ -3,6 +3,7 @@
 namespace ArtARTs36\ControlTime\Support;
 
 use ArtARTs36\ControlTime\Contracts\ReportFile;
+use ArtARTs36\ControlTime\Reports\Data\DownloadReport;
 use ArtARTs36\ControlTime\Reports\Data\ReportBuildContext;
 use ArtARTs36\ControlTime\Reports\Data\ReportFilter;
 use ArtARTs36\ControlTime\Reports\Data\ReportMeta;
@@ -35,18 +36,17 @@ class ReportService
     }
 
     /**
-     * @return string path to file
      * @throws \ArtARTs36\ControlTime\Reports\Exceptions\ReportNotFound
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
-    public function createReport(ReportFilter $filter, string $name, string $extension): string
+    public function createReport(ReportFilter $filter, string $name, string $extension): DownloadReport
     {
         $report = $this->buildReport($filter, $name, $extension);
         $fileAlias = $report->save($this->files, new ReportMeta($name, $this->sections->findOrCreate('controltime')));
 
         $this->events->dispatch(new ReportGenerated($report, $fileAlias));
 
-        return $this->files->getRealPath($fileAlias->getFile());
+        return new DownloadReport($this->files->getRealPath($fileAlias->getFile()), $fileAlias->getName());
     }
 
     /**

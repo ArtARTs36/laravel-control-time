@@ -17,13 +17,12 @@ class TimeReportController extends BaseController
 
     public function report(ReportBuildRequest $request, string $name, string $extension): BinaryFileResponse
     {
-        return response()
-            ->download(
-                $this->service->createReport(
-                    $request->toReportFilter(),
-                    $name,
-                    $extension
-                )
-            );
+        $report = $this->service->createReport(
+            $request->toReportFilter(),
+            $name,
+            $extension
+        );
+
+        return response()->download($report->path, $report->name);
     }
 }

@@ -22,13 +22,6 @@ class TimeReportPeriodTest extends TestCase
                 );
         };
 
-        $hash = '6b10dc93c7ace9671534645bbb3ee9c9';
-
-        $request(Carbon::now(), Carbon::now());
-
-        self::assertTrue($request(Carbon::now(), Carbon::now())
-            ->assertOk()
-            ->baseResponse
-            ->headers->contains('content-disposition', 'attachment; filename='. $hash));
+        $request(Carbon::now(), Carbon::now())->assertOk();
     }
 }
