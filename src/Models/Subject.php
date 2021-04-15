@@ -31,4 +31,9 @@ class Subject extends Model
     {
         return $this->belongsTo(SubjectType::class);
     }
+
+    public function getFullTitle(): string
+    {
+        return $this->title . ' [' . $this->type->title . ']';
+    }
 }

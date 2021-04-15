@@ -7,7 +7,6 @@ use ArtARTs36\ControlTime\Contracts\ReportFile;
 use ArtARTs36\ControlTime\Models\Time;
 use ArtARTs36\ControlTime\Reports\Infrastructure\FileObjects\CsvReportFile;
 use ArtARTs36\ControlTime\Reports\Infrastructure\Support\MakeCsv;
-use ArtARTs36\EmployeeInterfaces\Employee\EmployeeInterface;
 use Illuminate\Support\Collection;
 
 class CsvPeriodReport extends PeriodReport implements Report
@@ -38,21 +37,12 @@ class CsvPeriodReport extends PeriodReport implements Report
         return $data
             ->map(function (Time $time) {
                 return [
-                    $this->prepareEmployeeFullName($time->employee),
-                    $time->subject->title . ' [' . $time->subject->code . ']',
+                    $time->employee->getFullName(),
+                    $time->subject->getFullTitle(),
                     $time->date,
                     $time->getHours(),
                 ];
             })
             ->all();
-    }
-
-    protected function prepareEmployeeFullName(EmployeeInterface $employee): string
-    {
-        return implode(' ', [
-            $employee->getFamily(),
-            $employee->getName(),
-            $employee->getPatronymic(),
-        ]);
     }
 }

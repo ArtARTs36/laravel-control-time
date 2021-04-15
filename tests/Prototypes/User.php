@@ -3,11 +3,14 @@
 namespace ArtARTs36\ControlTime\Tests\Prototypes;
 
 use ArtARTs36\EmployeeInterfaces\Employee\EmployeeInterface;
+use ArtARTs36\EmployeeInterfaces\Employee\EmployeeSettersAndGettersTrait;
 use ArtARTs36\EmployeeInterfaces\WorkCondition\WorkConditionInterface;
 use Illuminate\Database\Eloquent\Model;
 
 class User extends Model implements \ArtARTs36\ControlTime\Contracts\User, EmployeeInterface
 {
+    use EmployeeSettersAndGettersTrait;
+
     protected $table = 'test_users';
 
     protected $fillable = [
