@@ -46,7 +46,7 @@ class ReportService
 
         $this->events->dispatch(new ReportGenerated($report, $fileAlias));
 
-        return new DownloadReport($this->files->getRealPath($fileAlias->getFile()), $fileAlias->getName());
+        return new DownloadReport($this->files->getRealPath($fileAlias->getFile()), $fileAlias->getFileName());
     }
 
     /**
