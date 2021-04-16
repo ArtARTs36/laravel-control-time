@@ -21,7 +21,7 @@ class TimeSeeder extends \Illuminate\Database\Seeder
                     factory(Time::class)->create([
                         Time::FIELD_EMPLOYEE_ID => $employee->getId(),
                         Time::FIELD_SUBJECT_ID => $subject->id,
-                        Time::FIELD_DATE => \Carbon\Carbon::parse("+ $i ago"),
+                        Time::FIELD_DATE => \Carbon\Carbon::parse("+ $i day ago"),
                     ]);
                 }
             }
