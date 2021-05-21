@@ -22,10 +22,6 @@ class CreateTimesTable extends Migration
             $table->integer('quantity');
             $table->unsignedInteger('employee_id');
 
-            $table->foreign('employee_id')
-                ->references('id')
-                ->on(\ArtARTs36\ControlTime\Support\Proxy::getEmployeeTable());
-
             $table->unsignedBigInteger('subject_id');
             $table->foreign('subject_id')->references('id')->on('controltime_subjects');
 

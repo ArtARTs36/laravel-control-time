@@ -13,14 +13,6 @@ class Proxy
     /**
      * @return string
      */
-    public static function getEmployeeTable(): string
-    {
-        return config('controltime.employee.table', 'controltime_employee');
-    }
-
-    /**
-     * @return string
-     */
     public static function getApiRoutePrefix(): string
     {
         return config('controltime.routes.api.prefix', 'controltime');
